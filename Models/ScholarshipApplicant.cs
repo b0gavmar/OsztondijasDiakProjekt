@@ -11,9 +11,13 @@ namespace OsztondijasDiakProjekt.Models
         private double _scholarshipAmount;
         private string _email;
 
-        public ScholarshipApplicant(int scholarshipAmount, string email, string name)
+        public ScholarshipApplicant (string email, string name)
         {
-            _scholarshipAmount = scholarshipAmount;
+            if(string.IsNullOrEmpty(name) || string.IsNullOrEmpty(email))
+            {
+                throw new ArgumentNullException("A név és email nem lehet üres");
+            }
+            _scholarshipAmount = 0;
             _email = email;
             Name = name;
         }
@@ -24,6 +28,10 @@ namespace OsztondijasDiakProjekt.Models
     
         public void IncreaseAmount(double increase)
         {
+            if(increase < 0)
+            {
+                throw new ArgumentException("Az összeg nem lehet negatív");
+            }
             _scholarshipAmount += increase;
         }
 
