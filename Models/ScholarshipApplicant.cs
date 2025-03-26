@@ -35,9 +35,18 @@ namespace OsztondijasDiakProjekt.Models
             _scholarshipAmount += increase;
         }
 
+        public void ChangeAmount(double newAmount)
+        {
+            if (newAmount < 0)
+            {
+                throw new ArgumentException("Az összeg nem lehet negatív");
+            }
+            _scholarshipAmount = newAmount;
+        }
+
         public override string ToString()
         {
-            return $"{Name} ({Email}) => {ScholarshipAmount}Ft";
+            return $"{Name} ({Email}) {ScholarshipAmount} Ft";
         }
     }
 }

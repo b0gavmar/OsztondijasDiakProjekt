@@ -27,7 +27,7 @@ public partial class ScholarshipContext : DbContext
         {
             entity
                 //.HasNoKey()
-                .ToTable("scholarship");
+                .ToTable("scholarships");
 
             entity.Property(e => e.Email).HasColumnName("email");
             entity.Property(e => e.Name).HasColumnName("name");
