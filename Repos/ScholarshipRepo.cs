@@ -121,5 +121,15 @@ namespace OsztondijasDiakProjekt.Repos
                 })
                 .ToListAsync();*/
         }
+
+        public Task<List<ScholarshipApplicant>> GetHighAmountAndExample()
+        {
+            return _context.Scholarships.Where(s => s.ScholarshipAmount >= 1800 && s.Email.Contains("@example.com")).ToListAsync();
+        }
+
+        public Task<List<ScholarshipApplicant>> GetAmountOrEmail()
+        {
+            return _context.Scholarships.Where(s => s.ScholarshipAmount >= 2000 || s.Email.Equals("alice@example.com")).ToListAsync();
+        }
     }
 }

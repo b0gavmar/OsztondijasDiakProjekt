@@ -92,3 +92,15 @@ foreach(ScholarshipGroup category in await repo.GroupedBy())
 {
     Console.WriteLine(category.Category + ": " + category.Count+" fő");
 }
+
+Console.WriteLine("9.");
+foreach (ScholarshipApplicant applicant in await repo.GetHighAmountAndExample())
+{
+    Console.WriteLine(applicant);
+}
+
+Console.WriteLine("10.");
+foreach (ScholarshipApplicant applicant in await repo.GetAmountOrEmail())
+{
+    Console.WriteLine(applicant);
+}
